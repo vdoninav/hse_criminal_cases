@@ -1,2 +1,6 @@
 .idea
 *.json
+*.csv
+*.DS_Store
+./RuLegalNER
+./results
