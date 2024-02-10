@@ -4,3 +4,5 @@
 *.DS_Store
 ./RuLegalNER
 ./results
+./ner
+./pkl
