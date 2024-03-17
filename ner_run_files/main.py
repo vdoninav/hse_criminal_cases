@@ -16,10 +16,9 @@ model.config.label2id = {v: k for k, v in model.config.id2label.items()}
 tokenizer = transformers.AutoTokenizer.from_pretrained(params.MODEL_CKECKPOINT)
 
 ''' Training '''
-num_epochs = 3
+num_epochs = 10
 
 args = transformers.TrainingArguments(
-    "ner",
     evaluation_strategy = "epoch",
     output_dir=params.CHECKPOINTS_DIR,
     learning_rate = params.LR,
@@ -34,8 +33,8 @@ data_collator = transformers.DataCollatorForTokenClassification(tokenizer)
 trainer = transformers.Trainer(
     model,
     args,
-    train_dataset = TokenLabelDataset(params.SAVE_DIR + 'tokenized_train.pkl'),
-    eval_dataset = TokenLabelDataset(params.SAVE_DIR + 'tokenized_validation.pkl'),
+    train_dataset = TokenLabelDataset(params.SAVE_DIR + 'tokenized_train.pkl', tokenizer),
+    eval_dataset = TokenLabelDataset(params.SAVE_DIR + 'tokenized_validation.pkl', tokenizer),
     data_collator = data_collator,
     tokenizer = tokenizer,
     compute_metrics = compute_metrics
