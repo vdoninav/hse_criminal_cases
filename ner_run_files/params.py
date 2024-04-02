@@ -32,6 +32,7 @@ VALIDATION_PATH = '/content/drive/MyDrive/coursework2024/RuLegalNER/validation.c
 SAVE_DIR = '/content/drive/MyDrive/coursework2024/data/'
 
 RENEW_SAVED_DATA_IN_PREPROCESSING = False
+CHOP_LONG_TEXTS = False
 
 BATCH_SIZE = 64
 LR = 2e-5

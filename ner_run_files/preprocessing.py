@@ -40,4 +40,27 @@ if params.RENEW_SAVED_DATA_IN_PREPROCESSING:
     example = ner_validation.loc[5:7]
     example.to_pickle(params.SAVE_DIR + "tokenized_example.pkl")
 
+if params.CHOP_LONG_TEXTS:
+    """ Chopping long token lists """
+    tokens_cnt = 512
+    overlap_cnt = 10
+    file_names = ["train", "test", "validation", "example"]
+    for name in file_names:
+        data = pd.read_pickle(params.SAVE_DIR + "tokenized_" + name + ".pkl")
+        print(data.shape)
+
+        new_data = pd.DataFrame(columns=data.columns)
+        print
+        for ind in data.index:
+            tokens = data.loc[ind, "tokens"]
+            labels = data.loc[ind, "labels"]
+            new_data.loc[len(new_data.index)] = [tokens[:tokens_cnt], labels[:tokens_cnt]]
+            tokens = tokens[(tokens_cnt - overlap_cnt):]
+            labels = labels[(tokens_cnt - overlap_cnt):]
+            while len(tokens) > 0:
+                new_data.loc[len(new_data.index)] = [tokens[:tokens_cnt], labels[:tokens_cnt]]
+                tokens = tokens[(tokens_cnt - overlap_cnt):]
+                labels = labels[(tokens_cnt - overlap_cnt):]
+        print(new_data.shape)
+        new_data.to_pickle(params.SAVE_DIR + "chopped_tokenized_" + name + ".pkl")
 

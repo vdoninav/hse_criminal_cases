@@ -33,8 +33,8 @@ data_collator = transformers.DataCollatorForTokenClassification(tokenizer)
 trainer = transformers.Trainer(
     model,
     args,
-    train_dataset = TokenLabelDataset(params.SAVE_DIR + 'tokenized_train.pkl', tokenizer),
-    eval_dataset = TokenLabelDataset(params.SAVE_DIR + 'tokenized_validation.pkl', tokenizer),
+    train_dataset = TokenLabelDataset(params.SAVE_DIR + 'chopped_tokenized_train.pkl', tokenizer),
+    eval_dataset = TokenLabelDataset(params.SAVE_DIR + 'chopped_tokenized_validation.pkl', tokenizer),
     data_collator = data_collator,
     tokenizer = tokenizer,
     compute_metrics = compute_metrics
@@ -50,7 +50,7 @@ print("Test evaluation all:")
 print(trainer.evaluate())
 
 print("Test evaluation per category:")
-predictions, labels, _ = trainer.predict(pd.read_pickle(params.SAVE_DIR + 'tokenized_test.pkl'))
+predictions, labels, _ = trainer.predict(pd.read_pickle(params.SAVE_DIR + 'chopped_tokenized_test.pkl'))
 predictions = np.argmax(predictions, axis=2)
 
 # Remove ignored index (special tokens)
