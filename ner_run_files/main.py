@@ -50,7 +50,8 @@ print("Test evaluation all:")
 print(trainer.evaluate())
 
 print("Test evaluation per category:")
-predictions, labels, _ = trainer.predict(pd.read_pickle(params.SAVE_DIR + 'chopped_tokenized_test.pkl'))
+test_dataset = TokenLabelDataset(params.SAVE_DIR + 'chopped_tokenized_test.pkl', tokenizer)
+predictions, labels, _ = trainer.predict(test_dataset)
 predictions = np.argmax(predictions, axis=2)
 
 # Remove ignored index (special tokens)
