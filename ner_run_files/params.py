@@ -23,8 +23,6 @@ TYPES = {2:"IND",
          17:"CR",
          }
 
-MODEL_CKECKPOINT = "cointegrated/rubert-tiny"
-
 TRAIN_PATH = '/content/drive/MyDrive/coursework2024/RuLegalNER/train.csv'
 TEST_PATH = '/content/drive/MyDrive/coursework2024/RuLegalNER/test.csv'
 VALIDATION_PATH = '/content/drive/MyDrive/coursework2024/RuLegalNER/validation.csv'
@@ -41,3 +39,6 @@ WEIGHT_DECAY = 0.01
 METRIC = evaluate.load("seqeval")
 
 CHECKPOINTS_DIR='/content/drive/MyDrive/coursework2024/checkpoints/'
+
+# MODEL_CKECKPOINT = "cointegrated/rubert-tiny"
+MODEL_CKECKPOINT = CHECKPOINTS_DIR+'best-checkpoint-yet'
