@@ -8,6 +8,7 @@ import params
 from prepare_data import TokenLabelDataset
 from compute_metrics import compute_metrics
 
+print(params.DEVICE)
 
 model = transformers.AutoModelForTokenClassification.from_pretrained(params.MODEL_CKECKPOINT, num_labels=len(params.LABEL_LIST))
 model.config.id2label = dict(enumerate(params.MODEL_CKECKPOINT))
@@ -40,6 +41,8 @@ trainer = transformers.Trainer(
     tokenizer = tokenizer,
     compute_metrics = compute_metrics
 )
+
+print(trainer.args.device)
 
 print(f"Training for {num_epochs} epochs:")
 
