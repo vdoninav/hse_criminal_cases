@@ -1,7 +1,7 @@
 import torch
 import evaluate
 
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+DEVICE = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 # IND [2] - Individual
 # LE [4] - Legal Entity
@@ -32,7 +32,7 @@ SAVE_DIR = '/content/drive/MyDrive/coursework2024/data/'
 RENEW_SAVED_DATA_IN_PREPROCESSING = False
 CHOP_LONG_TEXTS = False
 
-BATCH_SIZE = 128
+BATCH_SIZE = 100
 LR = 2e-5
 WEIGHT_DECAY = 0.01
 
