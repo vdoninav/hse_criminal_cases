@@ -12,11 +12,12 @@ from compute_metrics import compute_metrics
 model = transformers.AutoModelForTokenClassification.from_pretrained(params.MODEL_CKECKPOINT, num_labels=len(params.LABEL_LIST))
 model.config.id2label = dict(enumerate(params.MODEL_CKECKPOINT))
 model.config.label2id = {v: k for k, v in model.config.id2label.items()}
+model = model.to(params.DEVICE)
 
 tokenizer = transformers.AutoTokenizer.from_pretrained(params.MODEL_CKECKPOINT)
 
 ''' Training '''
-num_epochs = 10
+num_epochs = 3
 
 args = transformers.TrainingArguments(
     evaluation_strategy = "epoch",
