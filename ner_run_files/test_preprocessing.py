@@ -18,7 +18,7 @@ def test_preprocessing(csv_file, save_path):
     data = pd.DataFrame([prepare_data.extract_labels(data.loc[i]) for i in tqdm(range(data.shape[0]), desc='Extracting train labels')])
     print('saved')
 
-    tokens_cnt = 512
+    tokens_cnt = 510
     overlap_cnt = 10
 
     new_data = pd.DataFrame(columns=data.columns)

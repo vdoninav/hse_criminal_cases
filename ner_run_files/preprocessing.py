@@ -42,7 +42,7 @@ if params.RENEW_SAVED_DATA_IN_PREPROCESSING:
 
 if params.CHOP_LONG_TEXTS:
     """ Chopping long token lists """
-    tokens_cnt = 512
+    tokens_cnt = 510
     overlap_cnt = 10
     file_names = ["train", "test", "validation", "example"]
     for name in file_names:
