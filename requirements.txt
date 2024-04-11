@@ -1,6 +1,5 @@
-fastai~=2.7.13
-pandas~=2.1.4
-numpy~=1.26.2
-seqeval
-transformers
-torch
+evaluate~=0.4.0
+pandas~=2.2.2
+streamlit~=1.33.0
+torch~=2.1.2
+transformers~=4.32.1

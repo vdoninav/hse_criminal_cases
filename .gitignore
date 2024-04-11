@@ -2,6 +2,7 @@
 *.json
 *.csv
 *.DS_Store
+*.ipynb
 ./RuLegalNER
 ./results
 ./ner

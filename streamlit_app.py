@@ -6,7 +6,7 @@ from predict import predict
 
 def main():
     st.title("HSE Criminal Cases")
-    st.write("Welcome to my Streamlit app!")
+    st.write("Welcome ")
     st.write("Let's predict something...")
     text_input = st.text_input("Enter your input here")
     prediction = predict(text_input)

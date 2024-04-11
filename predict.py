@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoModelForTokenClassification
+from transformers import AutoModelForTokenClassification, AutoTokenizer
 
 from token_class_pipeline import TokenClassificationPipe
 import params

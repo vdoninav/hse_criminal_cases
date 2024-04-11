@@ -24,23 +24,8 @@ TYPES = {2: "IND",
          17: "CR",
          }
 
-TRAIN_PATH = 'data/train.csv'
-TEST_PATH = 'data/test.csv'
-VALIDATION_PATH = 'data/validation.csv'
-
-SAVE_DIR = 'data/'
-
-RENEW_SAVED_DATA_IN_PREPROCESSING = False
-
-BATCH_SIZE = 100
-LR = 2e-5
-WEIGHT_DECAY = 0.01
-
-METRIC = evaluate.load("seqeval")
-
-CHECKPOINTS_DIR = 'checkpoints/'
-
 # MODEL_CKECKPOINT = "cointegrated/rubert-tiny"
-MODEL_CKECKPOINT = 'checkpoints/checkpoint-25500'
+MODEL_CKECKPOINT = 'lebeda/bert-finetuned-on-RuLegalNer'
+# MODEL_CKECKPOINT = 'checkpoints/checkpoint-25500'
 
 TOKENIZER = transformers.AutoTokenizer.from_pretrained('cointegrated/rubert-tiny')
