@@ -1,16 +1,16 @@
 import streamlit as st
-import pandas as pd
 
 from predict import predict
 
 
 def main():
+    st.set_page_config(layout='wide')
     st.title("HSE Criminal Cases")
-    st.write("Welcome ")
+    st.write("Welcome")
     st.write("Let's predict something...")
-    text_input = st.text_input("Enter your input here")
+    text_input = st.text_area("To Predict:", "Your prompt here")
     prediction = predict(text_input)
-    st.write("The prediction is:", prediction)
+    st.write(prediction)
 
 
 if __name__ == "__main__":
