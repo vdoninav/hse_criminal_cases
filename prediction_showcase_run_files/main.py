@@ -11,7 +11,7 @@ from compute_metrics import compute_metrics
 print(params.DEVICE)
 
 model = transformers.AutoModelForTokenClassification.from_pretrained(params.MODEL_CKECKPOINT, num_labels=len(params.LABEL_LIST))
-model.config.id2label = dict(enumerate(params.MODEL_CKECKPOINT))
+model.config.id2label = dict(enumerate(params.LABEL_LIST))
 model.config.label2id = {v: k for k, v in model.config.id2label.items()}
 model = model.to(params.DEVICE)
 
