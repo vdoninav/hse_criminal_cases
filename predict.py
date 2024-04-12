@@ -7,7 +7,7 @@ import params
 
 def predict(text_input):
     tokenizer = params.TOKENIZER
-    model = AutoModelForTokenClassification.from_pretrained(params.MODEL_CKECKPOINT, num_labels=len(params.LABEL_LIST))
+    model = AutoModelForTokenClassification.from_pretrained(params.MODEL_CHECKPOINT, num_labels=len(params.LABEL_LIST))
     model.config.id2label = dict(enumerate(params.LABEL_LIST))
     model.config.label2id = {v: k for k, v in model.config.id2label.items()}
 

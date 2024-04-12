@@ -23,8 +23,8 @@ TYPES = {2: "IND",
          17: "CR",
          }
 
-# MODEL_CKECKPOINT = "cointegrated/rubert-tiny"
-MODEL_CKECKPOINT = 'lebeda/bert-finetuned-on-RuLegalNer'
-# MODEL_CKECKPOINT = 'checkpoints/checkpoint-25500'
+# MODEL_CHECKPOINT = "cointegrated/rubert-tiny"
+MODEL_CHECKPOINT = 'lebeda/bert-finetuned-on-RuLegalNer'
+# MODEL_CHECKPOINT = 'checkpoints/checkpoint-25500'
 
 TOKENIZER = transformers.AutoTokenizer.from_pretrained('cointegrated/rubert-tiny')
