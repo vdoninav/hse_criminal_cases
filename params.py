@@ -28,3 +28,5 @@ MODEL_CHECKPOINT = 'lebeda/bert-finetuned-on-RuLegalNer'
 # MODEL_CHECKPOINT = 'checkpoints/checkpoint-25500'
 
 TOKENIZER = transformers.AutoTokenizer.from_pretrained('cointegrated/rubert-tiny')
+
+WORD_COUNT_FILE = "data/word_counts.json"
