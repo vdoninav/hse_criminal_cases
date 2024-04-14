@@ -13,10 +13,11 @@ def main():
     st.write("Let's predict something...")
 
     user_input = st.text_area("To Predict:")
+    # morph analysis
+    # might take time
+    morph = Mystem()
 
     if user_input:
-        # morph analysis
-        morph = Mystem()
         # define dictionary to map entity groups to color
         groups_to_color = {"IND": "green", "LE": "blue", "PEN": "orange", "LAW": "red", "CR": "purple"}
         groups_to_label = {"IND": "Individual", "LE": "Legal Entity", "PEN": "Penalty", "LAW": "Law", "CR": "Crime"}
