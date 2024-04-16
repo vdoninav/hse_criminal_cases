@@ -4,6 +4,7 @@ import html
 
 from predict import predict
 from word_count import word_count
+from summarize import summarize
 
 
 def main():
@@ -22,6 +23,8 @@ def main():
         groups_to_color = {"IND": "green", "LE": "blue", "PEN": "orange", "LAW": "red", "CR": "purple"}
         groups_to_label = {"IND": "Individual", "LE": "Legal Entity", "PEN": "Penalty", "LAW": "Law", "CR": "Crime"}
 
+        # Doesn't work as expected
+        # user_input = summarize(user_input)
         # Prediction result as dictionary list
         predict_result = predict(user_input)
 
@@ -63,6 +66,7 @@ def main():
         st.markdown('&nbsp; | &nbsp;'.join(legend_parts), unsafe_allow_html=True)
 
         # Render it in markdown with html enabled
+        # TODO: Remove special symbols, i.e. '\n', '\t'
         st.markdown(html_output, unsafe_allow_html=True)
 
         # Legend generation
@@ -86,7 +90,7 @@ def main():
             st.markdown(
                 f'слово {colored_word} было найдено в тексте {words_predicted_lower.count(word.lower())} раз, в аналогичных текстах {word_counts.get(word, 0)} раз',
                 unsafe_allow_html=True)
-            # TODO: заменить слово на IND = личность, CR = преступление и т.д.
+            # TODO: заменить 'слово' на IND = личность, CR = преступление и т.д.
         # for word in set(words_predicted_lower):
         #     st.write(
         #         f'слово {word.upper()} было найдено в тексте {words_predicted.count(word)} раз, в аналогичных текстах {word_counts.get(word, 0)} раз')
