@@ -5,5 +5,5 @@ by **Lebedyuk Eva**, **Vdonin Aleksei**
 Coursework focused on Criminal Cases Investigation using Named Entity Recognition (NER)
 
 ### Link to the project web app:
-https://hse-criminal-cases.streamlit.app/
+https://hse-criminal-cases.streamlit.app
 
