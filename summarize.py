@@ -14,9 +14,9 @@ def summarize(input_text):
     subprocess.run(cmd)
     current_path = os.getcwd()
     if current_path[-1:-12:-1][::-1] != 'SummaRuNNer':
-        summary = open(f'{current_path}/SummaRuNNer/outputs/hyp/1.txt').read()
+        summary = open(f'{current_path}/SummaRuNNer/outputs/hyp/1.txt', 'r').read()
     else:
-        summary = open(f'{current_path}/outputs/hyp/1.txt').read()
+        summary = open(f'{current_path}/outputs/hyp/1.txt', 'r').read()
 
     # Ideally std::mutex or sys.wait here
     # Because data race and UB might happen
