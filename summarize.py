@@ -17,6 +17,9 @@ def summarize(input_text):
         summary = open(f'{current_path}/SummaRuNNer/outputs/hyp/1.txt').read()
     else:
         summary = open(f'{current_path}/outputs/hyp/1.txt').read()
+
+    # Ideally std::mutex or sys.wait here
+    # Because data race and UB might happen
     os.chdir(current_dir)
 
     return str(summary)

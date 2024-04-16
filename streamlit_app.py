@@ -4,7 +4,9 @@ import html
 
 from predict import predict
 from word_count import word_count
-from summarize import summarize
+
+
+# from summarize import summarize
 
 
 def main():
