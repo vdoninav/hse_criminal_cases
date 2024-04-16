@@ -15,7 +15,7 @@ def page_summarize():
 
     user_input = st.text_area("To Predict:")
     if user_input:
-        summarized_text = summarize(user_input)
+        summarized_text = summarize([user_input])
         st.write(summarized_text)
 
 
