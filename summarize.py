@@ -11,6 +11,8 @@ from tqdm import tqdm
 
 
 def summarize(examples):
+    if len(examples[0]) <= 1000:
+        return examples[0]
     use_gpu = False
     embed = torch.Tensor(np.load('data/embedding.npz')['embedding'])
     with open("data/word2id.json") as f:

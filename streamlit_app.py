@@ -6,6 +6,15 @@ from predict import predict
 from word_count import word_count
 from summarize import summarize
 
+user_input = ''
+
+
+def page_about():
+    st.title("HSE Criminal Cases")
+    st.subheader("About this coursework")
+
+    st.subheader("Created by :green[***Lebedyuk Eva***], :green[***Vdonin Aleksei***]")
+
 
 def page_summarize():
     # st.set_page_config(layout='wide')
@@ -13,10 +22,24 @@ def page_summarize():
     st.write("Welcome")
     st.write("Let's summarize something...")
 
-    user_input = st.text_area("To Predict:")
+    global user_input
+
+    if user_input == '':
+        user_input = st.text_area("Input:")
+    else:
+        user_input = st.text_area("Input:", user_input)
+
     if user_input:
+        # st.markdown("---")
         summarized_text = summarize([user_input])
+        s_len = len(summarized_text)
+        u_len = len(user_input)
         st.write(summarized_text)
+        st.markdown("---")
+        st.write(
+            f"original text length - :blue[{u_len}] vs :green[{s_len}] - summarized text length")
+        # st.write(f"summarized text length: :green[{len(summarized_text)}]")
+        st.write(f"Shortened by :green[{100 * (1 - s_len / u_len)}%]")
 
 
 def page_nlp():
@@ -25,12 +48,18 @@ def page_nlp():
     st.write("Welcome")
     st.write("Let's predict something...")
 
-    user_input = st.text_area("To Predict:")
+    global user_input
+
+    if user_input == '':
+        user_input = st.text_area("Input:")
+    else:
+        user_input = st.text_area("Input:", user_input)
     # morph analysis
     # might take time
     morph = Mystem()
 
     if user_input:
+        # st.markdown("---")
         # define dictionary to map entity groups to color
         groups_to_color = {"IND": "green", "LE": "blue", "PEN": "orange", "LAW": "red", "CR": "purple"}
         groups_to_label = {"IND": "Individual", "LE": "Legal Entity", "PEN": "Penalty", "LAW": "Law", "CR": "Crime"}
@@ -81,13 +110,17 @@ def page_nlp():
         # TODO: Remove special symbols, i.e. '\n', '\t'
         st.markdown(html_output, unsafe_allow_html=True)
 
+        if predict_result:
+            st.markdown("---")
         # Legend generation
-        legend_parts = []
-        for group, color in groups_to_color.items():
-            label = groups_to_label.get(group, group)
-            legend_part = f'<span style="color:{color};">{group} - {label}</span>'
-            legend_parts.append(legend_part)
-        st.markdown('&nbsp; | &nbsp;'.join(legend_parts), unsafe_allow_html=True)
+        if len(user_input) >= 500:
+
+            legend_parts = []
+            for group, color in groups_to_color.items():
+                label = groups_to_label.get(group, group)
+                legend_part = f'<span style="color:{color};">{group} - {label}</span>'
+                legend_parts.append(legend_part)
+            st.markdown('&nbsp; | &nbsp;'.join(legend_parts), unsafe_allow_html=True)
 
         # Word count displaying
         word_counts = word_count(words_predicted)
@@ -111,15 +144,18 @@ def page_nlp():
 def main():
     st.set_page_config(layout='wide')
     st.sidebar.title("Navigation")
-    nlp_button = st.sidebar.button("NLP")
-    summarize_button = st.sidebar.button("Summarize")
 
-    if nlp_button:
+    nav_option = st.sidebar.radio("Go To", ["***NLP***", "***Summarize***", "***About***"],
+                                  captions=["Classify identities in text", "Summarize large text",
+                                            "About this project"], label_visibility="hidden")
+
+    if nav_option == "***NLP***":
         page_nlp()
-    elif summarize_button:
+    elif nav_option == "***Summarize***":
         page_summarize()
+    elif nav_option == "***About***":
+        page_about()
     else:
-        # Replace this with your "default" page
         page_nlp()
 
 
