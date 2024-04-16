@@ -4,13 +4,23 @@ import html
 
 from predict import predict
 from word_count import word_count
+from summarize import summarize
 
 
-# from summarize import summarize
+def page_summarize():
+    # st.set_page_config(layout='wide')
+    st.title("HSE Criminal Cases")
+    st.write("Welcome")
+    st.write("Let's summarize something...")
+
+    user_input = st.text_area("To Predict:")
+    if user_input:
+        summarized_text = summarize(user_input)
+        st.write(summarized_text)
 
 
-def main():
-    st.set_page_config(layout='wide')
+def page_nlp():
+    # st.set_page_config(layout='wide')
     st.title("HSE Criminal Cases")
     st.write("Welcome")
     st.write("Let's predict something...")
@@ -96,6 +106,21 @@ def main():
         # for word in set(words_predicted_lower):
         #     st.write(
         #         f'слово {word.upper()} было найдено в тексте {words_predicted.count(word)} раз, в аналогичных текстах {word_counts.get(word, 0)} раз')
+
+
+def main():
+    st.set_page_config(layout='wide')
+    st.sidebar.title("Navigation")
+    nlp_button = st.sidebar.button("NLP")
+    summarize_button = st.sidebar.button("Summarize")
+
+    if nlp_button:
+        page_nlp()
+    elif summarize_button:
+        page_summarize()
+    else:
+        # Replace this with your "default" page
+        page_nlp()
 
 
 if __name__ == "__main__":
