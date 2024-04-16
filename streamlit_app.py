@@ -6,8 +6,6 @@ from predict import predict
 from word_count import word_count
 from summarize import summarize
 
-user_input = ''
-
 
 def page_about():
     st.title("HSE Criminal Cases")
@@ -22,12 +20,10 @@ def page_summarize():
     st.write("Welcome")
     st.write("Let's summarize something...")
 
-    global user_input
-
-    if user_input == '':
-        user_input = st.text_area("Input:")
-    else:
-        user_input = st.text_area("Input:", user_input)
+    if "user_input" not in st.session_state:
+        st.session_state.user_input = ""
+    user_input = st.text_area("Input:", value=st.session_state.user_input)
+    st.session_state.user_input = user_input
 
     if user_input:
         # st.markdown("---")
@@ -48,12 +44,10 @@ def page_nlp():
     st.write("Welcome")
     st.write("Let's predict something...")
 
-    global user_input
-
-    if user_input == '':
-        user_input = st.text_area("Input:")
-    else:
-        user_input = st.text_area("Input:", user_input)
+    if "user_input" not in st.session_state:
+        st.session_state.user_input = ""
+    user_input = st.text_area("Input:", value=st.session_state.user_input)
+    st.session_state.user_input = user_input
     # morph analysis
     # might take time
     morph = Mystem()
