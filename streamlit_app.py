@@ -1,5 +1,4 @@
 import streamlit as st
-from pymystem3 import Mystem
 import html
 
 from predict import predict
@@ -48,9 +47,6 @@ def page_nlp():
         st.session_state.user_input = ""
     user_input = st.text_area("Input:", value=st.session_state.user_input)
     st.session_state.user_input = user_input
-    # morph analysis
-    # might take time
-    morph = Mystem()
 
     if user_input:
         # st.markdown("---")
