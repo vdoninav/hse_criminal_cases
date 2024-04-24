@@ -12,6 +12,8 @@ def page_about():
 
     st.subheader("Created by :green[***Lebedyuk Eva***], :green[***Vdonin Aleksei***]")
 
+    st.subheader("[GitHub](https://github.com/vdoninav/hse_criminal_cases)")
+
 
 def page_summarize():
     # st.set_page_config(layout='wide')
@@ -97,7 +99,6 @@ def page_nlp():
         st.markdown('&nbsp; | &nbsp;'.join(legend_parts), unsafe_allow_html=True)
 
         # Render it in markdown with html enabled
-        # TODO: Remove special symbols, i.e. '\n', '\t'
         st.markdown(html_output, unsafe_allow_html=True)
 
         if predict_result:
